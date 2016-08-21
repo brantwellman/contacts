@@ -12,6 +12,8 @@
 
 $(document).ready(function() {
   appendContactList(contacts);
+  sortByFirstName(contacts);
+  sortByLastName(contacts);
 });
 
 
@@ -31,6 +33,20 @@ function compileContact(contact){
   return "<div class='contact'><p class='name'>" + contact + "</p></div>";
 }
 
+
+// Sorting of contacts
+function sortByFirstName(names){
+  var sortedByFirstName = names.sort();
+  $('#first-name').on('click', function() {
+    $('.contact').remove();
+    appendContactList(sortedByFirstName);
+  });
+}
+
+function sortByLastName(){
+
+}
+
 var contacts = [
   'Andy Mention',
   'Emily Davis',
@@ -48,5 +64,6 @@ var contacts = [
   'Hilary Denton',
   'Horacio Chavez',
   'Tim Proctor',
-  'Wil Faurot'
+  'Wil Faurot',
+  'Brant Wellman'
 ];
