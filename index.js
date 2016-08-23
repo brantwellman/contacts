@@ -20,6 +20,7 @@ $(document).ready(function() {
 // Dynamic Rendering of Contacts
 
 function appendContactList(contacts){
+  // debugger;
   contacts.forEach(renderContact);
 }
 
@@ -37,14 +38,34 @@ function compileContact(contact){
 // Sorting of contacts
 function sortByFirstName(names){
   var sortedByFirstName = names.sort();
+  debugger;
   $('#first-name').on('click', function() {
     $('.contact').remove();
+    // debugger
     appendContactList(sortedByFirstName);
   });
 }
 
-function sortByLastName(){
+function sortByLastName(names){
+  var sortedByLastName = sortLastNames(names);
+  // debugger
+  $('#last-name').on('click', function() {
+    $('.contact').remove();
+    appendContactList(sortedByLastName);
+  });
+}
 
+function sortLastNames(names) {
+  var sortedContacts = names.sort(function(a, b){
+    nameA = a.split(' ');
+    nameB = b.split(' ');
+    lastNameA = nameA[nameA.length - 1];
+    lastNameB = nameB[nameB.length - 1];
+    if (lastNameA < lastNameB) return -1;
+    if (lastNameA > lastNameB) return 1;
+    return 0;
+  });
+  return sortedContacts;
 }
 
 var contacts = [
