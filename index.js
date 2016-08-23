@@ -14,8 +14,30 @@ $(document).ready(function() {
   appendContactList(contacts);
   sortByFirstName(contacts);
   sortByLastName(contacts);
+  searchContacts();
 });
 
+
+var contacts = [
+  'Andy Mention',
+  'Emily Davis',
+  'Eric Fransen',
+  'Jessica Goulding',
+  'Jonmichael Chambers',
+  'Marc Garreau',
+  'Tan Doan',
+  'Alan Smith',
+  'Allison Larson',
+  'Andrew Watkins',
+  'Chad Brading',
+  'Corey Davis',
+  'Gustavo Villagrana',
+  'Hilary Denton',
+  'Horacio Chavez',
+  'Tim Proctor',
+  'Wil Faurot',
+  'Brant Wellman'
+];
 
 // Dynamic Rendering of Contacts
 function appendContactList(contacts){
@@ -63,23 +85,19 @@ function sortLastNames(names) {
   return sortedContacts;
 }
 
-var contacts = [
-  'Andy Mention',
-  'Emily Davis',
-  'Eric Fransen',
-  'Jessica Goulding',
-  'Jonmichael Chambers',
-  'Marc Garreau',
-  'Tan Doan',
-  'Alan Smith',
-  'Allison Larson',
-  'Andrew Watkins',
-  'Chad Brading',
-  'Corey Davis',
-  'Gustavo Villagrana',
-  'Hilary Denton',
-  'Horacio Chavez',
-  'Tim Proctor',
-  'Wil Faurot',
-  'Brant Wellman'
-];
+// Search contacts
+function searchContacts(){
+  $('#search').keyup(function(){
+    var $contacts = $('.contact');
+    var searchContent = $('#search').val().toLowerCase();
+    $.each($contacts, function(index, contact) {
+      $contact =  $(contact);
+      var lowerName = $contact.children().html().toLowerCase();
+      if (lowerName.includes(searchContent)){
+        $contact.show();
+      } else {
+        $contact.hide();
+      }
+    });
+  });
+}
