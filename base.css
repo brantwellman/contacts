@@ -4,7 +4,7 @@ body {
   font-family: "helvetica";
 }
 
-.header {
+.header, #new-contact-form {
   padding: 20px 10px 5px 10px;
   background-color: #fff;
   text-align: center;
@@ -55,4 +55,12 @@ body {
 .contact-list .contact p {
   font-weight: 200;
   color: #273444;
+}
+
+/*#new-contact-form {
+  visibility: hidden;
+}*/
+
+.hide {
+  visibility: hidden;
 }

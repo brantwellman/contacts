@@ -15,6 +15,7 @@ $(document).ready(function() {
   sortByFirstName(contacts);
   sortByLastName(contacts);
   searchContacts();
+  addNewContact();
 });
 
 
@@ -99,5 +100,13 @@ function searchContacts(){
         $contact.hide();
       }
     });
+  });
+}
+
+// Add New
+function addNewContact(){
+  $('#add-contact').on('click', function(){
+    var $newContactForm = $('#new-contact-form');
+    $newContactForm.removeClass("hide");
   });
 }
